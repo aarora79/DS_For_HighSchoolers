@@ -30,7 +30,7 @@ Welcome! You have decided to get introduced to the most exciting world of data s
 - <b>What do you need:</b> basic programming knowledge, a laptop and a desire to spend some time.
 - <b>Well we also need data:</b> we will be using the Montgomery County Community College Enrollment dataset during this class. What dataset would you like to analyze based on your area of interest?
 - <b>Schedule:</b> We meet for 6 classes during the next 12 days.
-- <b>Study Material:</b> this presentation and code is available at http://github.com/aarora79/.
+- <b>Study Material:</b> this presentation and code is available at https://github.com/aarora79/DS_For_HighSchoolers.
 - <b>Your Questions?</b>
 
 Class Schedule and Topics
