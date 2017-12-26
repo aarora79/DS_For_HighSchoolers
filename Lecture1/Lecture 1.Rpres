@@ -16,6 +16,7 @@
     background-size: 100% 100%;
 }
 </style>
+
 Lecture 1: Data Science for High Schoolers 
 ========================================================
 author: Amit Arora
