@@ -6,7 +6,7 @@
     font-family: courier;
     font-size: 160%;
 };
-      background-image: url(background7.png);
+      background-image: url(..\images\background7.png);
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
@@ -25,7 +25,7 @@
 Data Science for High Schoolers (Winter 2017)
 ========================================================
 author: Amit Arora
-date: 2017-12-26
+date: `r Sys.Date()`
 autosize: true
 
 Introduction
