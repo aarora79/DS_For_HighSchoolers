@@ -1,12 +1,7 @@
 <style>
 /* Your other css */
     body {
-      p  {
-    color: red;
-    font-family: courier;
-    font-size: 160%;
-};
-      background-image: url(background7.png);
+      background-image: url(https://raw.githubusercontent.com/aarora79/DS_For_HighSchoolers/master/images/background7.png);
       background-position: center center;
       background-attachment: fixed;
       background-repeat: no-repeat;
