@@ -1,0 +1,54 @@
+<style>
+/* Your other css */
+    body {
+      p  {
+    color: red;
+    font-family: courier;
+    font-size: 160%;
+};
+      background-image: url(background7.png);
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      text-color: blue;
+    }
+.section .reveal .state-background {
+    background-image: url(http://goo.gl/yJFbG4);
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+</style>
+
+Data Science for High Schoolers (Winter 2017)
+========================================================
+author: Amit Arora
+date: 2017-12-26
+autosize: true
+
+Introduction
+========================================================
+
+Welcome! You have decided to get introduced to the most exciting world of data science.
+- <b>What do you need:</b> basic programming knowledge, a laptop and a desire to spend some time.
+- <b>Well we also need data:</b> we will be using the Montgomery County Community College Enrollment dataset during this class. What dataset would you like to analyze based on your area of interest?
+- <b>Schedule:</b> We meet for 6 classes during the next 12 days.
+- <b>Study Material:</b> this presentation and code is available at http://github.com/aarora79/.
+- <b>Your Questions?</b>
+
+Class Schedule and Topics
+========================================================
+
+<b>Lecture 1 (12/26/2017, Tuesday 6pm to 7:30pm):</b> this class, introductions and getting started. The why, what and how.
+
+<b>Lecture 2 (12/28/2017, Thursday 6pm to 7:30pm):</b> data ingestion and data wrangling.
+
+<b>Lecture 3 (12/30/2017, Saturday 6pm to 7:30pm):</b> exploratory data analysis, data visualizations.
+
+<b>Lecture 4 (01/2/2018, Tuesday 6pm to 7:30pm):</b> more data visualizations.
+
+<b>Lecture 5 (01/4/2018, Thursday 6pm to 7:30pm):</b> understanding relationships in data. Linear models.
+
+<b>Lecture 6 (01/6/2018, Saturday 6pm tom 7.30pm):</b> Linear models continued. Review and wrapup.
