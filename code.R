@@ -75,6 +75,14 @@ if(httr::status_code(r) == 200) {
   barplot(sort(table(df$city_in_md)), horiz = T, las=2)
   
   #almost perfect, what is missing??
+  
+  #also it is nice to store the downloaded csv content
+  #in a file so that we can also see it in  excel
+  #make sure you use the "setwd()" function on the R console
+  #before you run this line to set the working directory to the
+  #current directory to see the enrollments.csv in the same directory
+  #as this code
+  write.csv(df, "enrollments.csv")
 } else {
   print("some error happened, we got the following error")
   print(status_code(r))
@@ -87,6 +95,7 @@ if(httr::status_code(r) == 200) {
 #provides APIs for downloading stock market data
 library('quantmod')
 
+#ok that did not work, why?
 #we use the "getSymbols" (symbols as in stock market symbols)
 #for downloading data for a particular stock..We use Apple stock for
 #this example
