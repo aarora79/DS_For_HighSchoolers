@@ -72,7 +72,9 @@ if(httr::status_code(r) == 200) {
   
   
   #ok that was nice, what can we do to make it even better
-  barplot(sort(table(df$city_in_md)), horiz = T, las=2)
+  barplot(sort(table(df$city_in_md)), horiz = T, las=2,
+          main="Enrollment count by city",
+          xlab = "count")
   
   #almost perfect, what is missing??
   
@@ -83,6 +85,24 @@ if(httr::status_code(r) == 200) {
   #current directory to see the enrollments.csv in the same directory
   #as this code
   write.csv(df, "enrollments.csv")
+  
+  #lets read it back
+  df = read.csv("enrollments.csv")
+  
+  par(mar=c(5, 15, 5, 5))
+  barplot(sort(table(df$mc_program_description)), horiz=T, las=2)
+  
+  par(mar=c(5, 15, 5, 5))
+  barplot(sort(table(df$race)), horiz=T, las=2)
+
+  df2 = df %>%
+    select(race, mc_program_description) %>%
+    group_by(race, mc_program_description) %>%
+    summarise(count = n()) %>%
+    arrange(desc(count))
+  write.csv(df2, "enrollments_by_race.csv")
+    
+  
 } else {
   print("some error happened, we got the following error")
   print(status_code(r))
@@ -141,7 +161,7 @@ plot(x = df$Date, y = df$AAPL.Close)
 #is a "string". Several graphical libraries will do that for you automatically
 #i.e. they will treat a string that looks like a date as a date automatically..
 #ok lets help base R plot function by telling it that this is a date
-plot(x = as.Date(df$Date), y = df$AAPL.Close)
+plot(x = as.Date(df$Date), y = df$AAPL.Close, col="red")
 
 #ok that looks much better..can we do even better...
 #we sure can, iving an example of special timeseries library called
