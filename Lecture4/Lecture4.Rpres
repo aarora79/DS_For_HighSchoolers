@@ -59,8 +59,8 @@ csv_content <- textConnection(text_content)
 #read the CSV content into a dataframe
 df <- read.csv(csv_content)
 
-#summary(df)
-colnames(df)
+summary(df)
+#colnames(df)
 ```
 
 Using Statistics to understand the data (contd.)
