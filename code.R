@@ -94,14 +94,14 @@ if(httr::status_code(r) == 200) {
   
   par(mar=c(5, 15, 5, 5))
   barplot(sort(table(df$race)), horiz=T, las=2)
-
+  
   df2 = df %>%
     select(race, mc_program_description) %>%
     group_by(race, mc_program_description) %>%
     summarise(count = n()) %>%
     arrange(desc(count))
   write.csv(df2, "enrollments_by_race.csv")
-    
+  
   
 } else {
   print("some error happened, we got the following error")
@@ -137,3 +137,64 @@ p <- df_course_by_gender %>%
   facet_wrap(~gender)
 p
 
+library(GGally)
+
+ggpairs(mpg)
+
+
+
+#ok we get an error saying there are too many unique values in the "model" column
+#lets remove that column and try again, we remove the column using th dplyr::select
+#function
+
+my_mpg = mpg %>%
+  select(-model) #variation in the way we have used select before, the "-"
+#says keep all features except this one
+
+
+
+#now lets try ggpairs again
+ggpairs(my_mpg)
+
+#we see that displacement and city seem correlated, lets make a more
+#manageable plot
+my_mpg2 = my_mpg %>%
+  select(displ, cty, manufacturer, cyl)
+
+ggpairs(my_mpg2)
+
+
+
+#ok lets try plotting city mileage via displ
+my_mpg2 %>%
+  ggplot(aes(x=displ, y=cty)) +
+  geom_point()
+
+#can we color each point based on cylinder
+my_mpg2 %>%
+  ggplot(aes(x=displ, y=cty)) +
+  geom_point(aes(col=as.factor(cyl)))
+
+#this tell us somethin obvious about cyclinder size and displacement..
+#anyway can we fir a linear model to calculate/determine cty mileage
+#based on displacement?
+
+set.seed(1234)
+lm_fit= lm(cty ~ displ, my_mpg2)
+summary(lm_fit)
+
+
+
+#lets plot the fitted values
+library(lattice)
+xyplot(cty ~ displ, data = my_mpg2, type = c("p","r"), col.line = "red")
+
+
+#equation of the linear model
+coeff = coefficients(lm_fit)
+cat(sprintf("the linear model is cty = %.2f + (%.2f)*displ", coeff[1], coeff[2]))
+
+#root mean square error
+rmse = sqrt(mean((lm_fit$fitted.values  - my_mpg2$cty)^2))
+
+cat(sprintf("the model has a root mean squared error of %.2f", rmse))
