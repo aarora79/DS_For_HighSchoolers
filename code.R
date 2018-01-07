@@ -180,11 +180,13 @@ set.seed(1234)
 lm_fit= lm(cty ~ displ, my_mpg2)
 summary(lm_fit)
 
-
-
-#lets plot the fitted values
-library(lattice)
-xyplot(cty ~ displ, data = my_mpg2, type = c("p","r"), col.line = "red")
+#lets plot the actual data and what the model calculates together to
+#see how close we got to the actual values
+my_mpg2$fitted_values = lm_fit$fitted.values
+my_mpg2 %>%
+  ggplot(aes(x=displ)) +
+  geom_point(aes(y=cty, col="actual")) + 
+  geom_line(aes(y=fitted_values, col="fitted")) 
 
 
 #equation of the linear model
@@ -193,5 +195,4 @@ cat(sprintf("the linear model is cty = %.2f + (%.2f)*displ", coeff[1], coeff[2])
 
 #root mean square error
 rmse = sqrt(mean((lm_fit$fitted.values  - my_mpg2$cty)^2))
-
 cat(sprintf("the model has a root mean squared error of %.2f", rmse))

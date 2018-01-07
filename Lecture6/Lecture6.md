@@ -76,7 +76,7 @@ The first problem is what is known as "feature selection".
 
 Scatter Matrix
 ========================================================
-![](scatter_matrix.png)
+![plot of chunk unnamed-chunk-1](Lecture6-figure/unnamed-chunk-1-1.png)
  - We see that displ and cty have a correlation of almost -0.80. 
  - This is a high negative correlation, in simple terms it means that cty and displ are related.
   + We can say something about one variable if we know the other and the negative means that when one of these variables goes up the other one goes down.
@@ -87,14 +87,13 @@ class: small-code
 We can plot these two variables using a scatter plot.
 
 ```r
-library(dplyr)
 library(ggplot2)
 mpg %>%
   ggplot(aes(x=displ, y=cty)) +
   geom_point()
 ```
 
-![plot of chunk unnamed-chunk-1](Lecture6-figure/unnamed-chunk-1-1.png)
+![plot of chunk unnamed-chunk-2](Lecture6-figure/unnamed-chunk-2-1.png)
 cty Vs displ plot
 ========================================================
 class: small-code
@@ -176,6 +175,20 @@ the model has a root mean squared error of 2.56
 We can now express our result by saying that the equation cty = 25.99 + (-2.63)displ can determine the city mileage given displacement with an average error of 2.56 miles/gallon.
 
 In other words, the mileage values we determine could be on an average within actual value - 2.56 and actual value  + 2.56. Note that it is possible that in some cases the error is higher than 2.56 but *on an average*  this is the error.
+
+A convenient way to plot the linear model
+=======================================================
+class: small-code
+The straight line represents the values that the model calculated for a given displacement value. We can see that the actual values lie sometimes above the line and sometimes below the line, so the straight line is sort of *moving the values towards the average*.
+
+
+```r
+mpg$fitted_values = lm_fit$fitted.values
+mpg %>%
+  ggplot(aes(x=displ)) + geom_point(aes(y=cty, col="actual")) + geom_line(aes(y=fitted_values, col="fitted")) 
+```
+
+![plot of chunk unnamed-chunk-6](Lecture6-figure/unnamed-chunk-6-1.png)
 
 Things that we glossed over
 =======================================================
