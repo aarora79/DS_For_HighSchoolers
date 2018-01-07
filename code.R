@@ -137,11 +137,9 @@ p <- df_course_by_gender %>%
   facet_wrap(~gender)
 p
 
+#class 6, linear models
 library(GGally)
-
 ggpairs(mpg)
-
-
 
 #ok we get an error saying there are too many unique values in the "model" column
 #lets remove that column and try again, we remove the column using th dplyr::select
@@ -150,7 +148,6 @@ ggpairs(mpg)
 my_mpg = mpg %>%
   select(-model) #variation in the way we have used select before, the "-"
 #says keep all features except this one
-
 
 
 #now lets try ggpairs again
